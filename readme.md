@@ -342,3 +342,136 @@ Phase 3 (4 weeks): Admin tools, Testing
 Phase 4 (2 weeks): Beta, Bug fixes, Launch
 
 Document Version: Final v1.0Author: Aditya UpadhyayLast Updated: June 21, 2025
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
+├── .github/                           # GitHub workflows and PR templates
+│   ├── ISSUE_TEMPLATE/               # Issue templates
+│   ├── PULL_REQUEST_TEMPLATE.md
+│   └── workflows/
+│       ├── ci.yml                    # Build, test, lint
+│       ├── cd.yml                    # Deploy to staging/prod
+│       └── security-scans.yml        # SAST/Dependabot checks
+│
+├── architecture/                      # Architecture Decision Records & Diagrams
+│   ├── ADR/                           # Markdown ADRs
+│   ├── diagrams/                      # PlantUML, draw.io files
+│   └── README.md
+│
+├── docs/                              # High‑level project docs
+│   ├── SRS/                           # Software Requirements Specification
+│   ├── GDD/                           # Game Design Document (lore, balance)
+│   ├── API/                           # OpenAPI + WebSocket schemas
+│   ├── SECURITY.md                    # Threat model & hardening guides
+│   ├── STYLE_GUIDE.md                 # Coding conventions (Go & JS)
+│   └── CONTRIBUTING.md                # How to contribute & code of conduct
+│
+├── frontend/                          # Phaser.js game client (monorepo style)
+│   ├── apps/                          
+│   │   └── game/                      # Primary game app
+│   │       ├── public/                # index.html, favicons, robots.txt
+│   │       ├── src/
+│   │       │   ├── assets/            # Sprites, sounds, music
+│   │       │   │   ├── tilesets/
+│   │       │   │   ├── characters/
+│   │       │   │   ├── ui/
+│   │       │   │   └── audio/
+│   │       │   ├── engine/            # Phaser scenes & systems
+│   │       │   ├── ui/                # React/Preact overlays (menus, HUD)
+│   │       │   ├── store/             # Pinia/Redux state management
+│   │       │   ├── services/          # REST & WS clients, typings
+│   │       │   └── utils/             # Helpers & polyfills
+│   │       ├── tests/                 # Jest & Playwright for E2E
+│   │       ├── tsconfig.json
+│   │       ├── package.json
+│   │       └── vite.config.ts
+│   ├── libs/                          # Shared UI components & hooks
+│   └── README.md
+│
+├── backend/                           # Go microservices (monorepo style)
+│   ├── cmd/                           # Entrypoints per service
+│   │   ├── auth/main.go
+│   │   ├── world/main.go
+│   │   ├── combat/main.go
+│   │   └── ...                        
+│   ├── services/                      # Service folders with clean architecture
+│   │   ├── auth/
+│   │   ├── character/
+│   │   ├── world/
+│   │   ├── combat/
+│   │   ├── inventory/
+│   │   ├── quest/
+│   │   ├── chat/
+│   │   ├── admin/
+│   │   ├── analytics/
+│   │   └── billing/                   # (Future: microtransactions)
+│   ├── libs/                          # Reusable Go libraries
+│   │   ├── config/                    # Viper/Env loader & schema
+│   │   ├── logger/                    # Zap + structured logging
+│   │   ├── middleware/                # HTTP, WS, auth middleware
+│   │   ├── eventbus/                  # NATS/RabbitMQ client wrapper
+│   │   ├── observability/             # Metrics (Prometheus), tracing (Jaeger)
+│   │   └── security/                  # JWT, rate‑limiter, sanitizer
+│   ├── proto/                         # .proto definitions & generated code
+│   ├── tests/                         # Integration & contract tests
+│   ├── go.mod
+│   └── go.sum
+│
+├── infra/                             # Infrastructure as Code
+│   ├── kubernetes/                    # Helm charts & Kustomize overlays
+│   │   ├── base/
+│   │   └── overlays/
+│   │       ├── dev/
+│   │       ├── staging/
+│   │       └── prod/
+│   ├── terraform/                     # Cloud provisioning (GCP/AWS/Azure)
+│   ├── docker/                        # Dockerfiles & build scripts
+│   ├── nginx/                         # Reverse proxy & SSL config
+│   └── README.md
+│
+├── tools/                             # Developer utilities & CLIs
+│   ├── migrate/                       # DB migration runner (Go CLI)
+│   ├── seeder/                        # Initial data seeder
+│   ├── asset-packer/                  # Sprite atlas generator
+│   ├── ws-debugger/                   # WebSocket testing CLI
+│   └── codegen/                       # API client & proto codegen
+│
+├── database/                          # Data schemas & seeds
+│   ├── migrations/                    # SQL scripts per service
+│   │   ├── auth/
+│   │   ├── world/
+│   │   └── ...
+│   ├── seed/                          # YAML/JSON initial data
+│   └── schema-diagrams/               # ERD & relationship charts
+│
+├── tests/                             # Cross‑cutting test suites
+│   ├── e2e/                           # Full system E2E (Cypress/Playwright)
+│   ├── performance/                   # k6 or JMeter load tests
+│   ├── security/                      # OWASP ZAP scripts
+│   └── chaos/                         # Chaos Monkey experiments
+│
+├── mods/                              # Community mod support (future)
+│   ├── docs/                          # Modding API docs
+│   └── sample-mod/                    # Template mod project
+│
+├── benchmarks/                        # Benchmarks & profiling scripts
+│
+├── .env                               # Local environment vars
+├── .env.example
+├── .gitignore
+├── Makefile                           # Common tasks: build, lint, test, deploy
+├── README.md
+└── LICENSE
